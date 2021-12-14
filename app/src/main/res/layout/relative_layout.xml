@@ -6,6 +6,7 @@
     android:background="@drawable/wood_pxhere_com">
 
 
+
     <LinearLayout
         android:id="@+id/number_pad_center"
         android:layout_width="wrap_content"
@@ -285,7 +286,9 @@
             android:layout_margin="10sp"
             android:background="@color/display"
             android:textDirection="rtl"
-            android:textSize="20sp" />
+            android:text="@string/second_display"
+            android:textSize="20sp"
+            />
 
         <TextView
             android:id="@+id/main_display"
@@ -293,7 +296,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10sp"
             android:background="@color/display"
-            android:text="124"
+            android:text="@string/main_display"
             android:textColor="@color/black"
             android:textDirection="rtl"
             android:textSize="40sp" />
