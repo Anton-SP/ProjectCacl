@@ -11,17 +11,19 @@
     <string name="number_9">9</string>
     <string name="number_0">0</string>
     <string name="symbol_x">X</string>
+    <string name="symbol_X_print">*</string>
     <string name="symbol_minus">-</string>
     <string name="symbol_plus">+</string>
     <string name="symbol_division">/</string>
     <string name="symbol_negative">+/-</string>
-    <string name="symbol_dot">.</string>
-    <string name="symbol_equals">=</string>
+    <string name="symbol_dot">,</string>
+    <string name="symbol_result">=</string>
     <string name="symbol_sqrt">√</string>
     <string name="symbol_clean">C</string>
     <string name="symbol_delete">del</string>
-    <string name="main_display">124</string>
-    <string name="second_display">temp message</string>
+    <string name="main_display"></string>
+    <string name="second_display"></string>
+
 
 
 </resources>
