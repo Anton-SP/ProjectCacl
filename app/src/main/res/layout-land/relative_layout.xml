@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/wood_pxhere_com">
@@ -10,7 +11,8 @@
         android:id="@+id/number_pad_center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_above="@id/number_pad_bottom"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="5sp"
         android:layout_marginRight="5sp"
         android:background="@color/dark_light">
@@ -21,7 +23,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="5sp"
-            android:layout_weight="4"
+            android:layout_weight="5"
             android:backgroundTint="@color/black"
             android:text="@string/number_4"
             android:textSize="20sp" />
@@ -31,7 +33,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="5sp"
-            android:layout_weight="4"
+            android:layout_weight="5"
             android:backgroundTint="@color/black"
             android:text="@string/number_5"
             android:textSize="20sp" />
@@ -41,7 +43,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="5sp"
-            android:layout_weight="4"
+            android:layout_weight="5"
             android:backgroundTint="@color/black"
             android:text="@string/number_6"
             android:textSize="20sp" />
@@ -51,10 +53,20 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="5sp"
-            android:layout_weight="4"
+            android:layout_weight="5"
             android:backgroundTint="@color/gray"
             android:text="@string/symbol_minus"
             android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/button_sqrt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5sp"
+            android:layout_weight="5"
+            android:backgroundTint="@color/gray"
+            android:text="@string/symbol_sqrt"
+            android:textSize="18sp" />
 
     </LinearLayout>
 
@@ -62,7 +74,7 @@
         android:id="@+id/number_pad_bottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/number_pad_center"
+        android:layout_above="@id/calc_bottom"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="5sp"
         android:layout_marginRight="5sp"
@@ -73,7 +85,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="5sp"
-            android:layout_weight="4"
+            android:layout_weight="5"
             android:backgroundTint="@color/black"
             android:text="@string/number_1"
             android:textSize="20sp" />
@@ -83,7 +95,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="5sp"
-            android:layout_weight="4"
+            android:layout_weight="5"
             android:backgroundTint="@color/black"
             android:text="@string/number_2"
             android:textSize="20sp" />
@@ -93,7 +105,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="5sp"
-            android:layout_weight="4"
+            android:layout_weight="5"
             android:backgroundTint="@color/black"
             android:text="@string/number_3"
             android:textSize="20sp" />
@@ -103,9 +115,19 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="5sp"
-            android:layout_weight="4"
+            android:layout_weight="5"
             android:backgroundTint="@color/gray"
             android:text="@string/symbol_plus"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/button_del"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5sp"
+            android:layout_weight="5"
+            android:backgroundTint="@color/gray"
+            android:text="@string/symbol_delete"
             android:textSize="20sp" />
 
     </LinearLayout>
@@ -125,7 +147,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="5sp"
-            android:layout_weight="4"
+            android:layout_weight="5"
             android:backgroundTint="@color/black"
             android:text="@string/number_7"
             android:textSize="20sp" />
@@ -135,7 +157,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="5sp"
-            android:layout_weight="4"
+            android:layout_weight="5"
             android:backgroundTint="@color/black"
             android:text="@string/number_8"
             android:textSize="20sp" />
@@ -145,7 +167,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="5sp"
-            android:layout_weight="4"
+            android:layout_weight="5"
             android:backgroundTint="@color/black"
             android:text="@string/number_9"
             android:textSize="20sp" />
@@ -155,10 +177,20 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="5sp"
-            android:layout_weight="4"
+            android:layout_weight="5"
             android:backgroundTint="@color/gray"
             android:text="@string/symbol_x"
             android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/button_division"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5sp"
+            android:layout_weight="5"
+            android:backgroundTint="@color/gray"
+            android:text="@string/symbol_division"
+            android:textSize="18sp" />
 
     </LinearLayout>
 
@@ -166,7 +198,7 @@
         android:id="@+id/calc_bottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/number_pad_bottom"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="5sp"
         android:layout_marginRight="5sp"
@@ -178,7 +210,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="5sp"
-            android:layout_weight="4"
+            android:layout_weight="5"
             android:backgroundTint="@color/black"
             android:text="@string/symbol_negative"
             android:textSize="20sp" />
@@ -188,7 +220,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="5sp"
-            android:layout_weight="4"
+            android:layout_weight="5"
             android:backgroundTint="@color/black"
             android:text="@string/number_0"
             android:textSize="20sp" />
@@ -197,8 +229,11 @@
             android:id="@+id/button_dot"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="5sp"
-            android:layout_weight="4"
+            android:layout_marginStart="5sp"
+            android:layout_marginTop="5sp"
+            android:layout_marginEnd="5sp"
+            android:layout_marginBottom="5sp"
+            android:layout_weight="5"
             android:backgroundTint="@color/black"
             android:text="@string/symbol_dot"
             android:textSize="20sp" />
@@ -208,69 +243,26 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="5sp"
-            android:layout_weight="4"
+            android:layout_weight="5"
             android:backgroundTint="@color/gray"
             android:text="@string/symbol_result"
             android:textSize="20sp" />
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/operations_panel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/number_pad_top"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="5sp"
-        android:layout_marginRight="5sp"
-        android:background="@color/dark_light">
 
         <Button
             android:id="@+id/button_clean"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="5sp"
-            android:layout_weight="4"
+            android:layout_weight="5"
             android:backgroundTint="@color/gray"
             android:text="@string/symbol_clean"
             android:textSize="20sp" />
-
-        <Button
-            android:id="@+id/button_del"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="5sp"
-            android:layout_weight="4"
-            android:backgroundTint="@color/gray"
-            android:text="@string/symbol_delete"
-            android:textSize="20sp" />
-
-        <Button
-            android:id="@+id/button_sqrt"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="5sp"
-            android:layout_weight="4"
-            android:backgroundTint="@color/gray"
-            android:text="@string/symbol_sqrt"
-            android:textSize="18sp" />
-
-        <Button
-            android:id="@+id/button_division"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="5sp"
-            android:layout_weight="4"
-            android:backgroundTint="@color/gray"
-            android:text="@string/symbol_division"
-            android:textSize="18sp" />
 
     </LinearLayout>
 
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="495dp"
         android:layout_height="wrap_content"
         android:layout_above="@id/display_main_layout"
         android:layout_centerHorizontal="true"
@@ -296,9 +288,9 @@
 
     <LinearLayout
         android:id="@+id/display_main_layout"
-        android:layout_width="match_parent"
+        android:layout_width="495dp"
         android:layout_height="wrap_content"
-        android:layout_above="@id/operations_panel"
+        android:layout_above="@id/number_pad_top"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="5sp"
         android:layout_marginRight="5sp"
@@ -314,11 +306,11 @@
             android:background="@color/display"
             android:maxLength="2"
             android:maxLines="1"
+            android:minEms="10"
             android:text="@string/main_display"
-            android:textColor="@color/black"
-            android:textSize="40sp"
             android:textAlignment="center"
-            android:minEms="10"/>
+            android:textColor="@color/black"
+            android:textSize="40sp" />
 
         <TextView
             android:id="@+id/main_display"
@@ -330,8 +322,8 @@
             android:maxLength="12"
             android:maxLines="1"
             android:text="@string/main_display"
-            android:textColor="@color/black"
             android:textAlignment="textEnd"
+            android:textColor="@color/black"
             android:textSize="40sp" />
 
 
