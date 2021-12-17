@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
             if (data.getMainDisplay() != null) {
                 if (data.getMainDisplay().length() == 0) {
                     enterNumber(number0.getText());
+
                     data.setMainDisplay(data.getMainDisplay() + symbolDot.getText().toString());
                 } else data.setMainDisplay(data.getMainDisplay() + symbolDot.getText().toString());
             }
