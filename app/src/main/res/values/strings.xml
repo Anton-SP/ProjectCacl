@@ -21,8 +21,13 @@
     <string name="symbol_sqrt">√</string>
     <string name="symbol_clean">C</string>
     <string name="symbol_delete">del</string>
+    <string name="switch_theme">🌗</string>
+
+
     <string name="main_display"></string>
     <string name="second_display"></string>
+
+
 
 
 
