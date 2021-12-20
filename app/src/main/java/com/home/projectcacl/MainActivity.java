@@ -244,34 +244,4 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
-
-
-
-
-
-
- /*toggleButton.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-        @SuppressLint("ResourceAsColor")
-        @Override
-        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            if (toggleButton.isChecked()) {
-                Toast.makeText(
-                        MainActivity.this,
-                        R.string.on_message,
-                        Toast.LENGTH_SHORT
-                ).show();
-            } else {
-                Toast.makeText(
-                        MainActivity.this,
-                        R.string.off_message,
-                        Toast.LENGTH_SHORT
-                ).show();
-            }
-        }
-    });
-*/
-
-
 }
