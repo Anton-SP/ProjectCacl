@@ -2,12 +2,20 @@ package com.home.projectcacl;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
+import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
+
+import com.google.android.material.radiobutton.MaterialRadioButton;
 
 public class MainActivity extends AppCompatActivity {
     private static String DATA_KEY = "data_key";
@@ -35,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView mainDisplay;
     private TextView negativeStatus;
 
+    private Button darkMode;
+
     CalcData data = new CalcData();
 
 
@@ -42,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.relative_layout);
+
 
         if (savedInstanceState != null && savedInstanceState.containsKey(DATA_KEY)) {
             data = savedInstanceState.getParcelable(DATA_KEY);
@@ -78,10 +89,14 @@ public class MainActivity extends AppCompatActivity {
         number8.setOnClickListener(v -> enterNumber(number8.getText()));
         number9.setOnClickListener(v -> enterNumber(number9.getText()));
 
+        darkMode = findViewById(R.id.dark_mode_switch);
+
+
         symbolDot.setOnClickListener(v -> {
             if (data.getMainDisplay() != null) {
                 if (data.getMainDisplay().length() == 0) {
                     enterNumber(number0.getText());
+
                     data.setMainDisplay(data.getMainDisplay() + symbolDot.getText().toString());
                 } else data.setMainDisplay(data.getMainDisplay() + symbolDot.getText().toString());
             }
@@ -101,27 +116,27 @@ public class MainActivity extends AppCompatActivity {
 
         operationPlus.setOnClickListener(v -> {
             if (data.getMainDisplay() != null && data.getMainDisplay().length() > 0) {
-                if (secondDisplay.getText().length()>0) {
-                    secondDisplay.setText(secondDisplay.getText().toString() +mainDisplay.getText()+ operationPlus.getText().toString());
+                if (secondDisplay.getText().length() > 0) {
+                    secondDisplay.setText(secondDisplay.getText().toString() + mainDisplay.getText() + operationPlus.getText().toString());
                     data.setSecondDisplay(secondDisplay.getText());
                     data.setMainDisplay("");
                     mainDisplay.setText(data.getMainDisplay());
-                }   else {
+                } else {
                     secondDisplay.setText(mainDisplay.getText() + operationPlus.getText().toString());
                     data.setMainDisplay("");
                     mainDisplay.setText(data.getMainDisplay());
-                                }
+                }
             } else Toast.makeText(MainActivity.this, "Nothing to plus", Toast.LENGTH_SHORT).show();
         });
 
         operationMinus.setOnClickListener(v -> {
             if (data.getMainDisplay() != null && data.getMainDisplay().length() > 0) {
-                if (secondDisplay.getText().length()>0) {
-                    secondDisplay.setText(secondDisplay.getText().toString() + mainDisplay.getText() + operationMinus.getText().toString() );
+                if (secondDisplay.getText().length() > 0) {
+                    secondDisplay.setText(secondDisplay.getText().toString() + mainDisplay.getText() + operationMinus.getText().toString());
                     data.setSecondDisplay(secondDisplay.getText());
                     data.setMainDisplay("");
                     mainDisplay.setText(data.getMainDisplay());
-                }   else {
+                } else {
                     secondDisplay.setText(mainDisplay.getText() + operationMinus.getText().toString());
                     data.setMainDisplay("");
                     mainDisplay.setText(data.getMainDisplay());
@@ -132,12 +147,12 @@ public class MainActivity extends AppCompatActivity {
 
         operationX.setOnClickListener(v -> {
             if (data.getMainDisplay() != null && data.getMainDisplay().length() > 0) {
-                if (secondDisplay.getText().length()>0) {
-                    secondDisplay.setText(secondDisplay.getText().toString() + mainDisplay.getText() + operationX.getText().toString() );
+                if (secondDisplay.getText().length() > 0) {
+                    secondDisplay.setText(secondDisplay.getText().toString() + mainDisplay.getText() + operationX.getText().toString());
                     data.setSecondDisplay(secondDisplay.getText());
                     data.setMainDisplay("");
                     mainDisplay.setText(data.getMainDisplay());
-                }   else {
+                } else {
                     secondDisplay.setText(mainDisplay.getText() + operationX.getText().toString());
                     data.setMainDisplay("");
                     mainDisplay.setText(data.getMainDisplay());
@@ -149,12 +164,12 @@ public class MainActivity extends AppCompatActivity {
 
         operationDivision.setOnClickListener(v -> {
             if (data.getMainDisplay() != null && data.getMainDisplay().length() > 0) {
-                if (secondDisplay.getText().length()>0) {
-                    secondDisplay.setText(secondDisplay.getText().toString()  + mainDisplay.getText() + operationDivision.getText().toString());
+                if (secondDisplay.getText().length() > 0) {
+                    secondDisplay.setText(secondDisplay.getText().toString() + mainDisplay.getText() + operationDivision.getText().toString());
                     data.setSecondDisplay(secondDisplay.getText());
                     data.setMainDisplay("");
                     mainDisplay.setText(data.getMainDisplay());
-                }   else {
+                } else {
                     secondDisplay.setText(mainDisplay.getText() + operationDivision.getText().toString());
                     data.setMainDisplay("");
                     mainDisplay.setText(data.getMainDisplay());
@@ -188,7 +203,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (data.getMainDisplay() != null && data.getMainDisplay().length() > 0) {
-                   negativeStatus.setText(R.string.symbol_minus);
+                    negativeStatus.setText(R.string.symbol_minus);
                 }
             }
         });
@@ -202,7 +217,19 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        darkMode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                } else AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            }
+        });
+
+
     }
+
 
     private void enterNumber(CharSequence curBuffer) {
         data.setMainDisplay(data.getMainDisplay() + curBuffer.toString());
@@ -215,5 +242,36 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
 
     }
+
+
+
+
+
+
+
+
+
+
+ /*toggleButton.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+        @SuppressLint("ResourceAsColor")
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            if (toggleButton.isChecked()) {
+                Toast.makeText(
+                        MainActivity.this,
+                        R.string.on_message,
+                        Toast.LENGTH_SHORT
+                ).show();
+            } else {
+                Toast.makeText(
+                        MainActivity.this,
+                        R.string.off_message,
+                        Toast.LENGTH_SHORT
+                ).show();
+            }
+        }
+    });
+*/
+
 
 }

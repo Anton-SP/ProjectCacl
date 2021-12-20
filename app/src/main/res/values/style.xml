@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="buttons_numbers">
+        <item name="android:layout_width">@dimen/zero_dp</item>
+        <item name="android:layout_height">@dimen/standard_dp</item>
+        <item name="android:layout_margin">@dimen/button_margin_vertical</item>
+        <item name="cornerRadius">@dimen/button_corner</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
+        <item name="android:layout_weight">4</item>
+    </style>
+
+    <style name="buttons_numbers.switch_theme">
+    <item name="android:layout_width">@dimen/standard_dp</item>
+    <item name="android:layout_height">@dimen/standard_dp</item>
+    <item name="android:layout_margin">@dimen/button_margin_vertical</item>
+    <item name="cornerRadius">@dimen/button_corner</item>
+
+    </style>
+
+    <style name="buttons_numbers.buttons_land">
+        <item name="android:layout_weight">5</item>
+
+    </style>
+
+    <style name="buttons_operational">
+        <item name="android:layout_width">@dimen/zero_dp</item>
+        <item name="android:layout_height">@dimen/standard_dp</item>
+        <item name="android:layout_margin">@dimen/button_margin_vertical</item>
+        <item name="android:backgroundTint">@color/gray</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
+        <item name="android:layout_weight">4</item>
+    </style>
+
+    <style name="buttons_operational.buttons_land">
+        <item name="android:layout_weight">5</item>
+    </style>
+
+    <style name="number_pad_layout">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/layout_margin</item>
+        <item name="android:layout_marginRight">@dimen/layout_margin</item>
+        <item name="android:background">@color/dark_light</item>
+
+
+    </style>
+
+    <style name="number_pad_layout.display_layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:background">@color/gray</item>
+    </style>
+
+    <style name="number_pad_layout.display_layout.land">
+        <item name="android:layout_width">@dimen/display_width_land</item>
+     </style>
+
+    <style name="display">
+        <item name="android:layout_width">@dimen/zero_dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/layout_margin_double</item>
+        <item name="android:background">@color/display</item>
+        <item name="android:maxLength">12</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textAlignment">textEnd</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/display_size</item>
+    </style>
+
+    <style name="display.display_negative">
+        <item name="android:maxLength">1</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="display.display_second">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textSize">@dimen/display_size_half</item>
+        <item name="android:maxLength">15</item>
+    </style>
+
+    <style name="display.land">
+        <item name="android:textSize">@dimen/display_size_land</item>
+    </style>
+
+    <style name="display.display_negative_land">
+        <item name="android:textSize">@dimen/display_size_land</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:maxLength">15</item>
+    </style>
+
+    <style name="display.display_second_land">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textSize">@dimen/display_size_land_half</item>
+    </style>
+
+
+</resources>
