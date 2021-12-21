@@ -16,12 +16,14 @@
     <string name="symbol_plus">+</string>
     <string name="symbol_division">/</string>
     <string name="symbol_negative">+/-</string>
-    <string name="symbol_dot">,</string>
+    <string name="symbol_dot">.</string>
     <string name="symbol_result">=</string>
     <string name="symbol_sqrt">√</string>
     <string name="symbol_clean">C</string>
     <string name="symbol_delete">del</string>
     <string name="switch_theme">🌗</string>
+    <string name="empty_field"> </string>
+
 
 
     <string name="main_display"></string>
