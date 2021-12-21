@@ -266,7 +266,7 @@ public class MainActivity extends AppCompatActivity {
                     mainDisplay.setText(Double.toString(data.result()));
 
                 } else {
-                    data.setSecondNumber(Float.parseFloat(mainDisplay.getText().toString()));
+                    data.setSecondNumber(Double.parseDouble(mainDisplay.getText().toString()));
                     mainDisplay.setText(Double.toString(data.result()));
                 }
 
