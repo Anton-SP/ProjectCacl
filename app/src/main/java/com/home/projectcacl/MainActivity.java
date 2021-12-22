@@ -245,40 +245,37 @@ public class MainActivity extends AppCompatActivity {
             if (data.isNegativeFlag()) {
                 data.setNegativeFlag(false);
                 negativeStatus.setText(R.string.empty_field);
-
             } else {
                 if (data.getMainDisplay() != null && data.getMainDisplay().length() > 0) {
                     negativeStatus.setText(R.string.symbol_minus);
                     data.setNegativeFlag(true);
                 }
-
             }
-
-
-        });
+       });
 
 
         operationResult.setOnClickListener(v -> {
-            if (data.getFirstNumber() != 0) {
+            if (data.getFirstNumber() != 0 && data.getMainDisplay().length() > 0) {
+
                 if (data.isNegativeFlag()) {
                     data.setSecondNumber(Double.parseDouble(mainDisplay.getText().toString()) * (-1));
                     changeToNegative.performClick();
                     mainDisplay.setText(Double.toString(data.result()));
-
                 } else {
                     data.setSecondNumber(Double.parseDouble(mainDisplay.getText().toString()));
                     mainDisplay.setText(Double.toString(data.result()));
                 }
+                data.setFirstNumber(0);
+                data.setSecondNumber(0);
+                secondDisplay.setText(R.string.empty_field);
 
-            }
+            } else  Toast.makeText(MainActivity.this, "There nothing to result", Toast.LENGTH_SHORT).show();
 
         });
 
 
         operationClean.setOnClickListener(v -> {
             clean();
-
-
         });
 
         operationDelete.setOnClickListener(v -> {
@@ -291,8 +288,6 @@ public class MainActivity extends AppCompatActivity {
                     mainDisplay.setText(data.getMainDisplay());
                     data.setDotCount(false);
                 }
-
-
             } else
                 Toast.makeText(MainActivity.this, "Nothing to delete", Toast.LENGTH_SHORT).show();
         });

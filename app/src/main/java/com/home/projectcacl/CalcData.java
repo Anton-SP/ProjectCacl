@@ -11,15 +11,7 @@ public class CalcData implements Parcelable {
     private double firstNumber;
     private double secondNumber;
     private Operations operation;
-    //   Operations operation;
 
-
-   /* задел на будущее
-    private String firstNumber; перове число или экран
-    private String secondNumber; второе чило или доп экран
-    private boolean negativeFlag; флаг для утсановки отрци числа
-    private boolean dotCount; флаг для утсановки только 1 точки!
-   */
 
     public CalcData() {
         dotCount = false;
