@@ -12,6 +12,7 @@
     <dimen name="display_size_land">30sp</dimen>
     <dimen name="display_size_land_half">15sp</dimen>
     <dimen name="display_width_land">495dp</dimen>
+    <dimen name="exit_margin">50dp</dimen>
 
 
 </resources>

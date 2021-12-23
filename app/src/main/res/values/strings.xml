@@ -25,12 +25,18 @@
     <string name="empty_field"> </string>
 
 
-
     <string name="main_display"></string>
     <string name="second_display"></string>
-
-
-
+    <string name="day_button">Day</string>
+    <string name="night_button">Night</string>
+    <string name="return_button">save and return</string>
+    <string name="message_plus">Nothing to plus</string>
+    <string name="message_minus">Nothing to minus</string>
+    <string name="message_multiply">Nothing to multiply</string>
+    <string name="message_division">Nothing to Division</string>
+    <string name="message_sqrt">You can not get a square root of a negative number</string>
+    <string name="message_result">There nothing to result</string>
+    <string name="message_delete">Nothing to delete</string>
 
 
 </resources>

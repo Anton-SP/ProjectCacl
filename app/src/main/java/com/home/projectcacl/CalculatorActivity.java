@@ -1,17 +1,22 @@
 package com.home.projectcacl;
 
+
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
-    private static String DATA_KEY = "data_key";
+public class CalculatorActivity extends AppCompatActivity implements Constants {
+
     private Button number0;
     private Button number1;
     private Button number2;
@@ -36,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView mainDisplay;
     private TextView negativeStatus;
 
+    private ActivityResultLauncher<Intent> themeLauncher;
+
     private Button darkMode;
 
     CalcData data = new CalcData();
@@ -46,13 +53,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.relative_layout);
 
+        call_calc();
+
+        Log.d(TAG, "create");
 
         if (savedInstanceState != null && savedInstanceState.containsKey(DATA_KEY)) {
             data = savedInstanceState.getParcelable(DATA_KEY);
-
+            Log.d(TAG, "onLoad");
         }
 
         initCalculator();
+        changeTheme();
+
 
         number0.setOnClickListener(v -> enterNumber(number0.getText()));
         number1.setOnClickListener(v -> enterNumber(number1.getText()));
@@ -79,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                         data.setFirstNumber(data.result());
                         secondDisplay.setText((data.getFirstNumber()) + operationPlus.getText().toString());
                     }
-                    negativeStatus.performClick();
+
                     data.setOperation(data.getOperation().plus);
                     data.setSecondDisplay(secondDisplay.getText());
                     data.setMainDisplay("");
@@ -97,8 +109,10 @@ public class MainActivity extends AppCompatActivity {
                     data.setOperation(data.getOperation().plus);
                     data.setMainDisplay("");
                     mainDisplay.setText(data.getMainDisplay());
+                    data.setSecondDisplay(secondDisplay.getText());
                 }
-            } else Toast.makeText(MainActivity.this, "Nothing to plus", Toast.LENGTH_SHORT).show();
+            } else
+                Toast.makeText(CalculatorActivity.this, R.string.message_plus, Toast.LENGTH_SHORT).show();
         });
 
         operationMinus.setOnClickListener(v -> {
@@ -115,12 +129,10 @@ public class MainActivity extends AppCompatActivity {
                         data.setFirstNumber(data.result());
                         secondDisplay.setText((data.getFirstNumber()) + operationMinus.getText().toString());
                     }
-                    negativeStatus.performClick();
                     data.setOperation(data.getOperation().minus);
                     data.setSecondDisplay(secondDisplay.getText());
                     data.setMainDisplay("");
                     mainDisplay.setText(data.getMainDisplay());
-
                 } else {
                     if (data.isNegativeFlag()) {
                         data.setFirstNumber(Double.parseDouble(mainDisplay.getText().toString()) * (-1));
@@ -133,8 +145,10 @@ public class MainActivity extends AppCompatActivity {
                     data.setOperation(data.getOperation().minus);
                     data.setMainDisplay("");
                     mainDisplay.setText(data.getMainDisplay());
+                    data.setSecondDisplay(secondDisplay.getText());
                 }
-            } else Toast.makeText(MainActivity.this, "Nothing to minus", Toast.LENGTH_SHORT).show();
+            } else
+                Toast.makeText(CalculatorActivity.this, R.string.message_minus, Toast.LENGTH_SHORT).show();
         });
 
         operationX.setOnClickListener(v -> {
@@ -151,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
                         data.setFirstNumber(data.result());
                         secondDisplay.setText((data.getFirstNumber()) + operationX.getText().toString());
                     }
-                    negativeStatus.performClick();
+
                     data.setOperation(data.getOperation().multiply);
                     data.setSecondDisplay(secondDisplay.getText());
                     data.setMainDisplay("");
@@ -169,9 +183,10 @@ public class MainActivity extends AppCompatActivity {
                     data.setOperation(data.getOperation().multiply);
                     data.setMainDisplay("");
                     mainDisplay.setText(data.getMainDisplay());
+                    data.setSecondDisplay(secondDisplay.getText());
                 }
             } else
-                Toast.makeText(MainActivity.this, "Nothing to multiply", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CalculatorActivity.this, R.string.message_multiply, Toast.LENGTH_SHORT).show();
         });
 
 
@@ -189,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
                         data.setFirstNumber(data.result());
                         secondDisplay.setText((data.getFirstNumber()) + operationDivision.getText().toString());
                     }
-                    negativeStatus.performClick();
+
                     data.setOperation(data.getOperation().division);
                     data.setSecondDisplay(secondDisplay.getText());
                     data.setMainDisplay("");
@@ -207,16 +222,17 @@ public class MainActivity extends AppCompatActivity {
                     data.setOperation(data.getOperation().division);
                     data.setMainDisplay("");
                     mainDisplay.setText(data.getMainDisplay());
+                    data.setSecondDisplay(secondDisplay.getText());
                 }
             } else
-                Toast.makeText(MainActivity.this, "Nothing to Division", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CalculatorActivity.this, R.string.message_division, Toast.LENGTH_SHORT).show();
         });
 
 
         operationSqrt.setOnClickListener(v -> {
             if (data.getMainDisplay() != null && data.getMainDisplay().length() > 0) {
                 if (data.isNegativeFlag()) {
-                    Toast.makeText(MainActivity.this, "You can't get a square root of a negative number", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CalculatorActivity.this, R.string.message_sqrt, Toast.LENGTH_SHORT).show();
                 } else {
                     data.setFirstNumber(Double.parseDouble(mainDisplay.getText().toString()));
                     data.setOperation(data.getOperation().Sqrt);
@@ -251,7 +267,7 @@ public class MainActivity extends AppCompatActivity {
                     data.setNegativeFlag(true);
                 }
             }
-       });
+        });
 
 
         operationResult.setOnClickListener(v -> {
@@ -261,15 +277,18 @@ public class MainActivity extends AppCompatActivity {
                     data.setSecondNumber(Double.parseDouble(mainDisplay.getText().toString()) * (-1));
                     changeToNegative.performClick();
                     mainDisplay.setText(Double.toString(data.result()));
+                    data.setMainDisplay(mainDisplay.getText());
                 } else {
                     data.setSecondNumber(Double.parseDouble(mainDisplay.getText().toString()));
                     mainDisplay.setText(Double.toString(data.result()));
+                    data.setMainDisplay(mainDisplay.getText());
                 }
                 data.setFirstNumber(0);
                 data.setSecondNumber(0);
                 secondDisplay.setText(R.string.empty_field);
 
-            } else  Toast.makeText(MainActivity.this, "There nothing to result", Toast.LENGTH_SHORT).show();
+            } else
+                Toast.makeText(CalculatorActivity.this, R.string.message_result, Toast.LENGTH_SHORT).show();
 
         });
 
@@ -289,21 +308,46 @@ public class MainActivity extends AppCompatActivity {
                     data.setDotCount(false);
                 }
             } else
-                Toast.makeText(MainActivity.this, "Nothing to delete", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CalculatorActivity.this, R.string.message_delete, Toast.LENGTH_SHORT).show();
         });
 
 
         darkMode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                } else AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                Intent settings = new Intent(CalculatorActivity.this, SettingActivity.class);
+                settings.putExtra(THEME_MODE, AppCompatDelegate.getDefaultNightMode());
+                themeLauncher.launch(settings);
             }
         });
 
 
+    }
+
+    private void call_calc() {
+        Intent call_intent = getIntent();
+        Bundle bundle = call_intent.getExtras();
+        if (bundle == null) {
+            return;
+        }
+
+    }
+
+
+    private void changeTheme() {
+        themeLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    Intent settingResult = result.getData();
+                    if (settingResult != null) {
+                        int mode = settingResult.getIntExtra(THEME_MODE, -1);
+                        if (mode == 1)
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                        if (mode == 2)
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    }
+                }
+        );
     }
 
     private void clean() {
@@ -325,8 +369,16 @@ public class MainActivity extends AppCompatActivity {
         secondDisplay = findViewById(R.id.second_display);
         negativeStatus = findViewById(R.id.negative_status);
 
+
         mainDisplay.setText(data.getMainDisplay());
+
         secondDisplay.setText(data.getSecondDisplay());
+        if (data.isNegativeFlag()) {
+            negativeStatus.setText(R.string.symbol_minus);
+        } else {
+            negativeStatus.setText(R.string.empty_field);
+        }
+
 
         number0 = findViewById(R.id.number_0);
         number1 = findViewById(R.id.number_1);
@@ -362,8 +414,42 @@ public class MainActivity extends AppCompatActivity {
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         outState.putParcelable(DATA_KEY, data);
         super.onSaveInstanceState(outState);
-
+        Log.d(TAG, "onSave");
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d(TAG, "restart");
+    }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG, "onStart");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy");
+    }
 }
