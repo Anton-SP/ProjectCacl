@@ -4,18 +4,18 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class CalcData implements Parcelable {
-    private String mainDisplay ="";
-    private String secondDisplay="";
+    private String mainDisplay = "";
+    private String secondDisplay = "";
+    private boolean negativeFlag;
+    private boolean dotCount;
+    private double firstNumber;
+    private double secondNumber;
+    private Operations operation;
 
-   /* задел на будущее
-    private String firstNumber; перове число или экран
-    private String secondNumber; второе чило или доп экран
-    private boolean negativeFlag; флаг для утсановки отрци числа
-    private boolean dotCount; флаг для утсановки только 1 точки!
-   */
 
     public CalcData() {
-
+        dotCount = false;
+        negativeFlag = false;
     }
 
     public String getSecondDisplay() {
@@ -57,4 +57,72 @@ public class CalcData implements Parcelable {
             return new CalcData[size];
         }
     };
+
+    public boolean isNegativeFlag() {
+        return negativeFlag;
+    }
+
+    public void setNegativeFlag(boolean negativeFlag) {
+        this.negativeFlag = negativeFlag;
+    }
+
+    public boolean isDotCount() {
+        return dotCount;
+    }
+
+    public void setDotCount(boolean dotCount) {
+        this.dotCount = dotCount;
+    }
+
+    public Operations getOperation() {
+        return operation;
+    }
+
+    public void setOperation(Operations operation) {
+        this.operation = operation;
+    }
+
+    public double getFirstNumber() {
+        return firstNumber;
+    }
+
+    public void setFirstNumber(double firstNumber) {
+        this.firstNumber = firstNumber;
+    }
+
+    public double getSecondNumber() {
+        return secondNumber;
+    }
+
+    public void setSecondNumber(double secondNumber) {
+        this.secondNumber = secondNumber;
+    }
+
+    public double result() {
+        switch (operation) {
+            case plus: {
+                return (firstNumber + secondNumber);
+            }
+            case minus: {
+                return (firstNumber - secondNumber);
+            }
+            case multiply: {
+                return (firstNumber * secondNumber);
+            }
+            case division: {
+                return (firstNumber / secondNumber);
+            }
+            case Sqrt: {
+                return (Math.sqrt(firstNumber));
+            }
+
+            default:
+                return 0;
+
+        }
+
+
+    }
+
+
 }
